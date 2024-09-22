@@ -1,10 +1,14 @@
 import {openingHours} from "../../utils/opening-hours.js"
 import dayjs from "dayjs"
+import { hoursClick } from "./hours-click.js"
 
 const hours = document.getElementById("hours")
 
 //carrega as horas depois da verificação
 export function hoursLoad({date}){
+
+  hours.innerHTML = ""
+
   const opening = openingHours.map((hour) => {
     //recupera somente a hora
     const [scheduleHour] = hour.split(":")
@@ -15,7 +19,6 @@ export function hoursLoad({date}){
     .set('second', 0)
     .isAfter(dayjs())
     
-    console.log(scheduleHour, isHourPast)
     return{
       hour,
       available: isHourPast,
@@ -41,6 +44,8 @@ export function hoursLoad({date}){
 
     hours.append(li)
   })
+
+  hoursClick()
 }
 
 function hourHeaderAdd(tittle){

@@ -5,8 +5,14 @@ import { hoursClick } from "./hours-click.js";
 const hours = document.getElementById("hours");
 
 //carrega as horas depois da verificação
-export function hoursLoad({ date }) {
+export function hoursLoad({ date, dailySchedules }) {
   hours.innerHTML = "";
+
+  //obtem a lista de todos os horários ocupados
+  const unavailableHours = dailySchedules.map((schedule) =>
+    dayjs(schedule.when).format("HH:mm"))
+
+
 
   const opening = openingHours.map((hour) => {
     //recupera somente a hora
@@ -17,11 +23,13 @@ export function hoursLoad({ date }) {
       .set("hour", scheduleHour)
       .set("minute", 0)
       .set("second", 0)
-      .isAfter(dayjs());
+      .isBefore(dayjs());
+
+      const available = !unavailableHours.includes(hour) && !isHourPast
 
     return {
       hour,
-      available: isHourPast,
+      available,
     };
   });
 

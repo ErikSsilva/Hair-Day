@@ -71,6 +71,17 @@ The main structure of the project is as follows:
 ├── package.json         # Project Dependencies and Scripts
 └── README.md            # Documentation
    ```
+
+## ⚙️ Tecnologias Utilizadas
+-> Webpack: To package the code
+
+-> Babel: Transpise code to older versions of JavaScript
+
+-> json-server: Simulate a REST API
+
+-> Day.js: Date Manipulation
+
+
 ## Thank you for your time!
 
 

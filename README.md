@@ -72,7 +72,7 @@ The main structure of the project is as follows:
 └── README.md            # Documentation
    ```
 
-## ⚙️ Tecnologias Utilizadas
+## ⚙️ Technologies Used:
 -> Webpack: To package the code
 
 -> Babel: Transpise code to older versions of JavaScript

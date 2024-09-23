@@ -1,7 +1,7 @@
-import {schedulesDay} from "..//schedules/load"
+import { schedulesDay } from "..//schedules/load";
 
-const selectedDate = document.getElementById("date")
+const selectedDate = document.getElementById("date");
 
 //recarregando as datas com base no dia
 
-selectedDate.onchange = () => schedulesDay()
+selectedDate.onchange = () => schedulesDay();

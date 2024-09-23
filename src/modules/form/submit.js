@@ -1,49 +1,44 @@
-import dayjs from "dayjs"
+import dayjs from "dayjs";
 
-const form = document.querySelector("form")
-const selectedDate = document.getElementById("date")
-const clientName = document.getElementById("client")
-const inputToday = dayjs(new Date()).format("YYYY-MM-DD")
+const form = document.querySelector("form");
+const selectedDate = document.getElementById("date");
+const clientName = document.getElementById("client");
+const inputToday = dayjs(new Date()).format("YYYY-MM-DD");
 
 //carrega a data atual
-selectedDate.value = inputToday
-selectedDate.min = inputToday
+selectedDate.value = inputToday;
+selectedDate.min = inputToday;
 
 form.onsubmit = (event) => {
   //previne o comportamento padrão do form
-  event.preventDefault()
+  event.preventDefault();
 
-  try{
+  try {
+    const name = clientName.value.trim();
 
-    const name = clientName.value.trim()
-    
-    if(!name) {
-      return alert("Enter the client name")
+    if (!name) {
+      return alert("Enter the client name");
     }
 
-    const hourSelected = document.querySelector(".hour-selected")
-    
-    if(!hourSelected){
-      return alert ("Select Time")
+    const hourSelected = document.querySelector(".hour-selected");
+
+    if (!hourSelected) {
+      return alert("Select Time");
     }
 
+    const [hour] = hourSelected.innerText.split(":");
 
-    const [hour] = hourSelected.innerText.split(":")
+    const when = dayjs(selectedDate.value).add(hour, "hour");
 
-
-    const when = dayjs(selectedDate.value).add(hour, "hour")
-   
-    const id = new Date().getTime()
+    const id = new Date().getTime();
 
     console.log({
       id,
       name,
-      when
-  })
+      when,
+    });
+  } catch (error) {
+    alert("Unable to schedule");
+    console.log(error);
   }
-  catch(error){
-    alert("Unable to schedule")
-    console.log(error)
-  }
-
-}
+};
